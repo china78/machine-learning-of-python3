@@ -1,6 +1,7 @@
 import numpy as np
 from math import sqrt
 from collections import Counter
+from accuracy_score import accuracy_score
 
 raw_data_X = [
     [3.393533211, 2.331273381],
@@ -50,8 +51,12 @@ class KNNClassifier:
         votes = Counter(topK_y)
         return votes.most_common(1)[0][0]
 
+    def score(self, X_test, y_test):
+        y_predict = self.predict(X_test)
+        return accuracy_score(y_test, y_predict)
+
 
 knn_clf = KNNClassifier(k=6)
 knn_clf.fit(X_train=X_train, y_train=y_train)
 predict = knn_clf.predict(X_predict=x)
-print(predict)
+# print(predict)

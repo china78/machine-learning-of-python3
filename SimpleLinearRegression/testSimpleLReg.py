@@ -39,8 +39,6 @@ print(y_predict)
 
 reg = SimpleLinearRegression1()
 reg.fit(x, y)
-print('a_:', reg.a_)
-print('b_:', reg.b_)
 
 y_predict_ = reg.predict(np.array([x_predict]))
 print('y_predict_: ', y_predict_)

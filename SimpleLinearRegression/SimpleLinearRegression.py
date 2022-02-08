@@ -1,4 +1,5 @@
 import numpy as np
+from sklearn.metrics import r2_score
 
 
 class SimpleLinearRegression1:
@@ -33,9 +34,12 @@ class SimpleLinearRegression1:
     def _predict(self, single_x):
         return self.a_ * single_x + self.b_
 
+    def score(self, x_test, y_test):
+        y_predict = self.predict(x_test)
+        return r2_score(y_test, y_predict)
+
+
 # 向量化
-
-
 class SimpleLinearRegression2:
     def __init__(self):
         self.a_ = None
@@ -66,3 +70,7 @@ class SimpleLinearRegression2:
 
     def _predict(self, single_x):
         return self.a_ * single_x + self.b_
+
+    def score(self, x_test, y_test):
+        y_predict = self.predict(x_test)
+        return r2_score(y_test, y_predict)
